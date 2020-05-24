@@ -1,5 +1,5 @@
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from os import environ
 from selenium import webdriver
 
@@ -15,7 +15,8 @@ class WeatherBot:
 
     @staticmethod
     def reform_weather_info():
-        now = datetime.now()
+        utc_now = datetime.utcnow()
+        local_now = utc_now + timedelta(hours=9)
         weather_info_html = crawl_naver_weather_info()
 
         rainfall = weather_info_html.find("span", {"class": "rainfall"})
@@ -30,9 +31,9 @@ class WeatherBot:
             detail_info = rainfall.text
 
         weather_info = {
-            "today_date": now.strftime(DATE_FORMAT),
-            "week_day": WEEK_DAY[now.weekday()],
-            "today_datetime": now.strftime(DATETIME_FORMAT),
+            "today_date": local_now.strftime(DATE_FORMAT),
+            "week_day": WEEK_DAY[local_now.weekday()],
+            "today_datetime": local_now.strftime(DATETIME_FORMAT),
             "today_temp": weather_info_html.find("span", {"class": "todaytemp"}).text + " 도",
             "cast_txt": weather_info_html.find("p", {"class": "cast_txt"}).text,
             "min_temperature": weather_info_html.find("span", {"class": "min"}).text,
@@ -74,7 +75,8 @@ class WeatherBot:
 
     def submit_auto_weather_info(self):
         self._click_form()
-        self._submit_weather_info(contents=self.reform_weather_info())
+        print(self.reform_weather_info())
+        #self._submit_weather_info(contents=self.reform_weather_info())
         print("완료스!")
 
 
