@@ -9,7 +9,9 @@ from crawl_weather_info import crawl_naver_weather_info
 
 class WeatherBot:
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        self.driver = webdriver.Chrome(chrome_options=options)
 
     @staticmethod
     def reform_weather_info():
@@ -44,7 +46,7 @@ class WeatherBot:
         self.driver.find_element_by_css_selector("form")
         text_form = self.driver.find_element_by_name("text")
         text_form.send_keys(contents)
-        text_form.submit()
+        print(contents)
 
     def _click_form(self):
         link = self.driver.find_element_by_xpath("/html/body/div[2]/div[2]/a")
