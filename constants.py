@@ -75,6 +75,6 @@ UNDER_30_DEGREE = {'반팔', '반바지', '민소매'}
 
 SAMPLE_COUNT = 2
 
-CLOTHES_TEXT = "옷차림은 아침과 저녁 쌀쌀 할 떄는 {clothes_first} 코디 / 낮에는 {clothes_seconds} 코디를 고려 해보세요~"
+CLOTHES_TEXT = "옷차림은 아침과 저녁 쌀쌀 할 때는 {clothes_first} 코디 / 낮에는 {clothes_seconds} 코디를 고려 해보세요~"
 
 
