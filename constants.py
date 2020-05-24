@@ -73,8 +73,8 @@ UNDER_22_DEGREE = {'얇은 가디건', '얇은 긴팔', '면바지', '청바지'
 UNDER_27_DEGREE = {'반팔', '얇은 셔츠', '반바지', '얇은 면바지'}
 UNDER_30_DEGREE = {'반팔', '반바지', '민소매'}
 
-SAMPLE_COUNT = 3
+SAMPLE_COUNT = 2
 
-CLOTHES_TEXT = "옷차림은 아침과 저녁 쌀쌀 할 떄는 {clothes_first} 코디를, 낮에는 {clothes_seconds} 코디를 고려 해보세요~"
+CLOTHES_TEXT = "옷차림은 아침과 저녁 쌀쌀 할 떄는 {clothes_first} 코디 / 낮에는 {clothes_seconds} 코디를 고려 해보세요~"
 
 
