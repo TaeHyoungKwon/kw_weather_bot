@@ -46,7 +46,7 @@ class WeatherBot:
         self.driver.find_element_by_css_selector("form")
         text_form = self.driver.find_element_by_name("text")
         text_form.send_keys(contents)
-        print(contents)
+        text_form.submit()
 
     def _click_form(self):
         link = self.driver.find_element_by_xpath("/html/body/div[2]/div[2]/a")
