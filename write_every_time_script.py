@@ -103,7 +103,7 @@ class WeatherBot:
     def submit_auto_weather_info(self):
         self._click_form()
         print(self.reform_weather_info())
-        # self._submit_weather_info(contents=self.reform_weather_info())
+        self._submit_weather_info(contents=self.reform_weather_info())
         print("완료스!")
 
 
