@@ -75,6 +75,7 @@ class WeatherBot:
     def submit_auto_weather_info(self):
         self._click_form()
         self._submit_weather_info(contents=self.reform_weather_info())
+        print("완료스!")
 
 
 if __name__ == "__main__":
