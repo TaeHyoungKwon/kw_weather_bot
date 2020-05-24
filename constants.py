@@ -1,4 +1,4 @@
-fine_dust_sample_text = '''2020년 05월 23일 (토)
+fine_dust_sample_text = """2020년 05월 23일 (토)
 
 오늘의 미세먼지(오전 11시 기준)
 
@@ -13,9 +13,9 @@ fine_dust_sample_text = '''2020년 05월 23일 (토)
 안녕하세요. 여러분께 유용한 날씨, 미세먼지 정보를 매일 업데이트 해드리는 광운대날씨봇 입니다.
 날씨는 이미 올려주시고 계셔서 미세먼지 정보 매일매일 올려드립니다. 혹시 추가로 필요한 정보 있으시면 피드백 부탁 드립니다!
 즐거운 하루 되세요~
-'''
+"""
 
-weather_text = '''2020년 05월 23일 (토)
+weather_text = """2020년 05월 23일 (토)
 
 오늘의 날씨(오후 1시 기준)
 
@@ -28,6 +28,31 @@ weather_text = '''2020년 05월 23일 (토)
 안녕하세요. 여러분께 유용한 날씨, 미세먼지 정보를 매일 업데이트 해드리는 광운대날씨봇 입니다.
 날씨는 이미 올려주시고 계셔서 미세먼지 정보 매일매일 올려드립니다. 혹시 추가로 필요한 정보 있으시면 피드백 부탁 드립니다!
 즐거운 하루 되세요~
-'''
+"""
 
-SECRET_BOARD_URL = 'https://everytime.kr/255668'
+WEATHER_AUTO_TEXT = """{today_date} ({week_day})
+
+오늘의 날씨(현재 시각: {today_datetime})
+
+현재 기온: {today_temp}
+{cast_txt}
+최저 {min_temperature}/ 최고 {max_temperature} {sensible}
+{detail_info}
+
+안녕하세요. 여러분께 유용한 날씨, 미세먼지 정보를 매일 업데이트 해드리는 광운대날씨봇 입니다.
+광운대 주변 날씨정보 매일 매일 올려드립니다. 
+
+이 봇은 매일 오전, 오후 한번씩 자동으로 날씨정보를 가져와서 글을 작성합니다
+
+혹시 추가로 필요한 정보 있으시면 댓글로 피드백 부탁 드립니다!
+즐거운 하루 되세요~"""
+
+SECRET_BOARD_URL = "https://everytime.kr/255668"
+
+NAVER_WEATHER_INFO_URL = "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EB%85%B8%EC%9B%90%EA%B5%AC+%EC%9B%94%EA%B3%84+2%EB%8F%99+%EB%82%A0%EC%94%A8"
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36"
+
+WEEK_DAY = ("월", "화", "수", "목", "금", "토", "일")
+
+DATE_FORMAT = "%Y년 %m월 %d일"
+DATETIME_FORMAT = "%p %I시 %M분"
