@@ -35,6 +35,8 @@ WEATHER_AUTO_TEXT = """{today_date} ({week_day})
 오늘의 날씨(현재 시각: {today_datetime})
 
 현재 기온: {today_temp} / {sensible}
+현재 습도: {humidity}
+
 {cast_txt}
 {detail_info}
 

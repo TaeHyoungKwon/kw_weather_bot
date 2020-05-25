@@ -13,7 +13,7 @@ from constants import (
     OVER_30_DEGREE,
     CLOTHES_TEXT,
 )
-from crawl_weather_info import crawl_naver_weather_info
+from crawl_weather_info import crawl_naver_weather_info, crawl_naver_humidity_info
 from helpers import choose_clothes
 
 
@@ -28,6 +28,9 @@ class WeatherBot:
         utc_now = datetime.utcnow()
         local_now = utc_now + timedelta(hours=9)
         weather_info_html = crawl_naver_weather_info()
+        humidity_info_html = crawl_naver_humidity_info()
+
+        expected_humidity = humidity_info_html.find("dd", {"class": "weather_item"})
 
         rainfall = weather_info_html.find("span", {"class": "rainfall"})
         uv = weather_info_html.find("span", {"class": "indicator"})
@@ -67,6 +70,7 @@ class WeatherBot:
             "sensible": weather_info_html.find("span", {"class": "sensible"}).text,
             "detail_info": detail_info,
             "clothes_message": clothes_message,
+            "humidity": expected_humidity.text,
         }
         return WEATHER_AUTO_TEXT.format(**weather_info)
 
@@ -74,6 +78,7 @@ class WeatherBot:
         self.driver.find_element_by_css_selector("form")
         text_form = self.driver.find_element_by_name("text")
         text_form.send_keys(contents)
+        print(contents)
         text_form.submit()
 
     def _click_form(self):
@@ -102,7 +107,6 @@ class WeatherBot:
 
     def submit_auto_weather_info(self):
         self._click_form()
-        print(self.reform_weather_info())
         self._submit_weather_info(contents=self.reform_weather_info())
         print("완료스!")
 
