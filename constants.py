@@ -30,9 +30,9 @@ weather_text = """2020년 05월 23일 (토)
 즐거운 하루 되세요~
 """
 
-WEATHER_AUTO_TEXT = """{today_date} ({week_day})
+WEATHER_AUTO_TEXT = """알림봇이 알려주는 오늘의 날씨!
 
-오늘의 날씨(현재 시각: {today_datetime})
+{today_date} ({week_day}) (현재 시각: {today_datetime})
 
 현재 기온: {today_temp} / {sensible}
 현재 습도: {humidity}
