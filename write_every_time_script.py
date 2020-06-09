@@ -52,7 +52,7 @@ class WeatherBot:
 
         if int_max_temperature > 30:
             clothes_message = OVER_30_DEGREE
-        if int_min_temperature < 0:
+        elif int_min_temperature < 0:
             clothes_message = OVER_30_DEGREE
         else:
             clothes_message = CLOTHES_TEXT.format(
