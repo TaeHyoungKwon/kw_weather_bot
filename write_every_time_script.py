@@ -12,9 +12,9 @@ from helpers import choose_clothes
 
 class WeatherBot:
     def __init__(self):
-        # options = webdriver.ChromeOptions()
-        # options.add_argument("headless")
-        self.driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument("headless")
+        self.driver = webdriver.Chrome('chromedriver', chrome_options=options)
 
     @staticmethod
     def reform_weather_info():
@@ -89,7 +89,9 @@ class WeatherBot:
         text_form = self.driver.find_element_by_name("text")
         text_form.send_keys(contents)
         print(contents)
-        text_form.submit()
+        time.sleep(1)
+        a = text_form.submit()
+        print(a)
 
     def _click_form(self):
         link = self.driver.find_element_by_xpath("/html/body/div[2]/div[2]/a")
