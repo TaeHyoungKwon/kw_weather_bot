@@ -1,19 +1,12 @@
-import time
 from datetime import datetime, timedelta
 from os import environ
+import time
+
 from selenium import webdriver
 
-from constants import (
-    SECRET_BOARD_URL,
-    weather_text,
-    WEATHER_AUTO_TEXT,
-    WEEK_DAY,
-    DATE_FORMAT,
-    DATETIME_FORMAT,
-    OVER_30_DEGREE,
-    CLOTHES_TEXT,
-)
-from crawl_weather_info import crawl_naver_weather_info, crawl_naver_humidity_info, crawl_naver_weather_sub_info
+from constants import (CLOTHES_TEXT, DATETIME_FORMAT, DATE_FORMAT, FREE_BOARD_URL, OVER_30_DEGREE, WEATHER_AUTO_TEXT,
+                       WEEK_DAY, weather_text)
+from crawl_weather_info import crawl_naver_humidity_info, crawl_naver_weather_info, crawl_naver_weather_sub_info
 from helpers import choose_clothes
 
 
@@ -101,7 +94,7 @@ class WeatherBot:
         link.click()
 
     def login(self):
-        self.driver.get(SECRET_BOARD_URL)
+        self.driver.get(FREE_BOARD_URL)
         time.sleep(1)
 
         # Get Login Form

@@ -49,6 +49,7 @@ WEATHER_AUTO_TEXT = """날씨봇이 알려주는 오늘의 날씨!
 """
 
 SECRET_BOARD_URL = "https://everytime.kr/255668"
+FREE_BOARD_URL = "https://everytime.kr/370443"
 
 NAVER_WEATHER_INFO_URL = "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EB%85%B8%EC%9B%90%EA%B5%AC+%EC%9B%94%EA%B3%84+2%EB%8F%99+%EB%82%A0%EC%94%A8"
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36"
