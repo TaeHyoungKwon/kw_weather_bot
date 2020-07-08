@@ -13,7 +13,7 @@ from constants import (
     OVER_30_DEGREE,
     CLOTHES_TEXT,
 )
-from crawl_weather_info import crawl_naver_weather_info, crawl_naver_humidity_info
+from crawl_weather_info import crawl_naver_weather_info, crawl_naver_humidity_info, crawl_naver_weather_sub_info
 from helpers import choose_clothes
 
 
@@ -28,12 +28,24 @@ class WeatherBot:
         utc_now = datetime.utcnow()
         local_now = utc_now + timedelta(hours=9)
         weather_info_html = crawl_naver_weather_info()
-        humidity_info_html = crawl_naver_humidity_info()
+        rainfall = weather_info_html.find("span", {"class": "rainfall"})
 
+        humidity_info_html = crawl_naver_humidity_info()
         expected_humidity = humidity_info_html.find("dd", {"class": "weather_item"})
 
-        rainfall = weather_info_html.find("span", {"class": "rainfall"})
         uv = weather_info_html.find("span", {"class": "indicator"})
+
+        weather_sub_info_html = crawl_naver_weather_sub_info()
+        expected_sub_info = weather_sub_info_html.find("dl", {"class": "indicator"})
+
+        mise, cho_mise, ozon = (
+            expected_sub_info.text.replace("미세먼지", "")
+            .replace("초", "")
+            .replace("오존지수", "")
+            .replace("/㎥", "/㎥-")
+            .replace("ppm", "ppm-")
+            .split()
+        )
 
         detail_info = ""
         if not (uv or rainfall):
@@ -71,6 +83,9 @@ class WeatherBot:
             "detail_info": detail_info,
             "clothes_message": clothes_message,
             "humidity": expected_humidity.text,
+            "mise_munji": mise,
+            "cho_mise_munji": cho_mise,
+            "ozon": ozon,
         }
         return WEATHER_AUTO_TEXT.format(**weather_info)
 

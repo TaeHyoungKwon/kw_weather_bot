@@ -43,15 +43,10 @@ WEATHER_AUTO_TEXT = """날씨봇이 알려주는 오늘의 날씨!
 최저 {min_temperature}는 최고 {max_temperature} 입니다.
 {clothes_message}
 
-
-
-안녕하세요. 여러분께 유용한 날씨 정보를 매일 업데이트 해드리는 광운대 날씨봇 입니다.
-광운대 주변 날씨정보 매일 매일 올려드립니다. 
-
-이 봇은 매일 오전 8시와 오후 3시에 한번씩 자동으로 날씨 정보를 가져와서 글을 작성합니다
-
-혹시 추가로 필요한 정보 있으시면 댓글로 피드백 부탁 드립니다!
-즐거운 하루 되세요~"""
+미세먼지: {mise_munji}
+초미세먼지: {cho_mise_munji}
+오존지수: {ozon}
+"""
 
 SECRET_BOARD_URL = "https://everytime.kr/255668"
 
