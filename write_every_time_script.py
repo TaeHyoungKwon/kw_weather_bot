@@ -5,16 +5,16 @@ import time
 from selenium import webdriver
 
 from constants import (CLOTHES_TEXT, DATETIME_FORMAT, DATE_FORMAT, FREE_BOARD_URL, OVER_30_DEGREE, WEATHER_AUTO_TEXT,
-                       WEEK_DAY, weather_text)
+                       WEEK_DAY, weather_text, WEATHER_INFO_TITLE)
 from crawl_weather_info import crawl_naver_humidity_info, crawl_naver_weather_info, crawl_naver_weather_sub_info
 from helpers import choose_clothes
 
 
 class WeatherBot:
     def __init__(self):
-        options = webdriver.ChromeOptions()
-        options.add_argument("headless")
-        self.driver = webdriver.Chrome(chrome_options=options)
+        # options = webdriver.ChromeOptions()
+        # options.add_argument("headless")
+        self.driver = webdriver.Chrome()
 
     @staticmethod
     def reform_weather_info():
@@ -82,8 +82,10 @@ class WeatherBot:
         }
         return WEATHER_AUTO_TEXT.format(**weather_info)
 
-    def _submit_weather_info(self, contents):
+    def _submit_weather_info(self, contents, title):
         self.driver.find_element_by_css_selector("form")
+        title_form = self.driver.find_element_by_name("title")
+        title_form.send_keys(title)
         text_form = self.driver.find_element_by_name("text")
         text_form.send_keys(contents)
         print(contents)
@@ -115,7 +117,7 @@ class WeatherBot:
 
     def submit_auto_weather_info(self):
         self._click_form()
-        self._submit_weather_info(contents=self.reform_weather_info())
+        self._submit_weather_info(contents=self.reform_weather_info(), title=WEATHER_INFO_TITLE)
         print("완료스!")
 
 
